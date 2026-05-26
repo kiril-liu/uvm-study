@@ -1,4 +1,0 @@
-alu.v
-dut_if.sv
-tb_pkg.sv
-tb_top.sv
