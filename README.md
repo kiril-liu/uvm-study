@@ -17,3 +17,7 @@ vcover merge alu.ucdb alu_seed0.ucdb alu_seed1.ucdb
 - 约束a,b的输入为[0:30],定义功能点cross(cp_op, a_kind, b_kind)是4种ALU操作在不同输入类别（如 0/1/30/[0:29]）下的情况。
 - 运行 3 个不同 seed，每个 seed 100 笔 transaction，共 300 笔。每次运行生成 .ucdb，最终对 3 个 .ucdb 进行 merge。
 - Merge 后 cross 覆盖率为 48%（31/64 cross bins 命中）。这说明随机激励已经覆盖到一部分 “op × 输入类别组合”的功能点，但仍有 33/64 的组合未命中。
+
+## 新增：apb_uart case
+### use run_regression.sh to run regression and check the floder at DATA/TIME folder.
+
