@@ -28,6 +28,8 @@ TESTS=(
   "apb_safe_reg_random_test|-sv_seed 1|seed1"
   "apb_safe_reg_random_test|-sv_seed 2|seed2"
   "apb_safe_reg_random_test|-sv_seed 3|seed3"
+	"uart_tx_basic_test"
+	"uart_tx_multi_data_test"
 )
 
 REPORT=$RUNDIR/report.txt

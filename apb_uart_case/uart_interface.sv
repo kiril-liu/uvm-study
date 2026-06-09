@@ -28,4 +28,19 @@ interface uart_interface (
     input UARTINT;
   endclocking
 
+	clocking rx_drv_cb @(posedge PCLK);
+		default input #1step output #1step;
+		
+		output RXD;
+
+		input  BAUDTICK;
+		input  TXD;
+		input  TXEN;
+	endclocking
+
+
+
+
+
+
 endinterface : uart_interface

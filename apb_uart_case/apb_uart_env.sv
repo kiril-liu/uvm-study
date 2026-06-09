@@ -5,7 +5,7 @@ class apb_uart_env extends uvm_env;
   apb_agent apb_agt;
 
   uart_agent uart_agt;
-  // apb_uart_scoreboard sb;
+  apb_uart_scoreboard sb;
   // apb_uart_coverage   cov;
 	//
 	
@@ -19,11 +19,12 @@ class apb_uart_env extends uvm_env;
     apb_agt = apb_agent::type_id::create("apb_agt", this);
 
     uart_agt = uart_agent::type_id::create("uart_agt", this);
+		sb			= apb_uart_scoreboard::type_id::create("sb",this);
   endfunction
 
 	  function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
-
+		uart_agt.tx_mon.tx_ap.connect(sb.tx_imp);
     // 目前 APB agent 内部自己连接 driver/sequencer
     // env 这里暂时没有连接关系
   endfunction

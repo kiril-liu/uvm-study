@@ -16,7 +16,7 @@ class uart_tx_monitor extends uvm_monitor;
 
 	function void build_phase(uvm_phase phase);
 		super.build_phase(phase);
-		if (!uvm_config_db#(virtual uart_interface)::get(this, "", "uart_vif", vif)) begin
+		if (!uvm_config_db#(virtual uart_interface)::get(this, "", "vif", vif)) begin
 			`uvm_fatal("NO_VIF", "Failed to get uart_interface from uvm_config_db")
 		end
 	endfunction
@@ -60,7 +60,7 @@ class uart_tx_monitor extends uvm_monitor;
 		wait_baud_ticks(16);
 		tr.stop_bit = vif.tx_mon_cb.TXD;
 		tr.stop_ok=(tr.stop_bit==1'b1);
-		if(tr.stop_ok) begin
+		if(!tr.stop_ok) begin
 		
 		`uvm_error("UART_TX_MON", $sformatf("Invalid stop bit: expected=1 actual=%0b data=0x%02h",tr.stop_bit,tr.data))
 		end

@@ -93,8 +93,8 @@ module tb_top;
 
     uvm_config_db#(virtual uart_interface)::set(
       null,
-      "uvm_test_top.*",
-      "uart_vif",
+      "uvm_test_top.env.uart_agt*",
+      "vif",
       uart_vif
     );
     run_test();

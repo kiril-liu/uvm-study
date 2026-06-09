@@ -18,6 +18,13 @@ class apb_uart_base_test extends uvm_test;
 			UVM_ACTIVE
 			);
 
+		uvm_config_db#(uvm_active_passive_enum)::set(
+			this,
+			"env.uart_agt",
+			"is_active",
+			UVM_ACTIVE
+			);
+
 		env=apb_uart_env::type_id::create("env",this);
 	endfunction
 
